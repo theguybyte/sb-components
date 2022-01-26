@@ -20,7 +20,8 @@
     "start": "start-storybook -p 6006",
     "build": "build-storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=15b52fe20cfa"
   },
   "eslintConfig": {
     "extends": [
@@ -59,6 +60,7 @@
     "@storybook/node-logger": "^6.4.14",
     "@storybook/preset-create-react-app": "^4.0.0",
     "@storybook/react": "^6.4.14",
+    "chromatic": "^6.4.1",
     "webpack": "^5.67.0"
   }
 }
