@@ -1,7 +1,28 @@
 {
-  "name": "my-storybook",
+  "name": "jim-my-storybook-components",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "homepage": "https://gocreativo.com",
+  "repository": {
+    "url": "https://github.com/theguybyte/sb-components",
+    "type": "git"
+  },
+  "peerDependencies": {
+    "react": ">=116",
+    "typescript": ">=4.0.0"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -10,6 +31,7 @@
     "@types/node": "^16.11.21",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "copyfiles": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -18,10 +40,12 @@
   },
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build": "build-storybook",
+    "build": "yarn clean && tsc && yarn copy-files",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=15b52fe20cfa"
+    "chromatic": "npx chromatic --project-token=15b52fe20cfa",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -61,6 +85,16 @@
     "@storybook/preset-create-react-app": "^4.0.0",
     "@storybook/react": "^6.4.14",
     "chromatic": "^6.4.1",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.2",
     "webpack": "^5.67.0"
-  }
+  },
+  "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+  ]
 }
